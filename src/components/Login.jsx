@@ -2,7 +2,7 @@ import "../styles/login.scss";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-function Login() {
+function Login({ onLogin }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [message, setMessage] = useState("");
@@ -25,11 +25,11 @@ function Login() {
 
 			const data = await response.json();
 			if (response.ok) {
-				setMessage(data.message);
-				localStorage.setItem("isLoggedIn", "true"); // On garde le login dans le navigateur
+				localStorage.setItem("isLoggedIn", "true");
+				onLogin(); // Met à jour l’état dans App
 				setTimeout(() => {
 					navigate("/dashboard");
-				}, 1000); // petit délai pour que l’utilisateur voit le message
+				}, 1000);
 			} else {
 				setMessage(data.message || "Email ou mot de passe incorrect.");
 			}
