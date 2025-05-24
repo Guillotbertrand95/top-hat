@@ -6,7 +6,7 @@ import Home from "./pages/Home.jsx";
 import Login from "./components/Login.jsx";
 import About from "./pages/About.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
-
+import Register from "./components/Register.jsx";
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -30,6 +30,10 @@ function App() {
 				<Route
 					path="/login"
 					element={<Login onLogin={handleLogin} />}
+				/>
+				<Route
+					path="/register"
+					element={<Register onLogin={handleLogin} />}
 				/>
 				<Route path="/dashboard" element={<Dashboard />} />
 			</Routes>

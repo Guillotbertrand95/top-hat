@@ -35,6 +35,23 @@ app.post("/login", (req, res) => {
 			.json({ message: "Email ou mot de passe incorrect." });
 	}
 });
+
+app.post("/register", (req, res) => {
+	const { email, password } = req.body;
+
+	if (!email || !password) {
+		return res
+			.status(400)
+			.json({ message: "Veuillez remplir tous les champs" });
+	}
+
+	// Ici tu ajouteras la logique de vérification et stockage en BDD
+
+	return res.status(201).json({
+		message: "Inscription réussie ! Vous pouvez maintenant vous connecter.",
+	});
+});
+
 app.listen(PORT, () => {
 	console.log(`Serveur lancé sur http://localhost:${PORT}`);
 });
